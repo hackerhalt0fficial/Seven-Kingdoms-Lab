@@ -84,3 +84,28 @@ Verify installation:
 docker --version
 docker compose version
 ```
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/YOUR-USERNAME/seven-kingdoms-lab.git
+cd seven-kingdoms-lab
+```
+
+## Start the Lab
+
+```bash
+docker compose up -d
+```
+
+
+Verify containers are running:
+```bash
+docker ps
+```
+
+## Initial Credentials
+```bash
+username: jon.snow
+password: Winter123!
+```
