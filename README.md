@@ -1,4 +1,4 @@
-# 🏰 Seven Kingdoms Offensive Security Lab
+# Seven Kingdoms Offensive Security Lab
 
 > A multi-stage, Game of Thrones–themed offensive security lab designed to provide students with realistic, hands-on penetration testing experience.
 
