@@ -4,6 +4,13 @@
 
 ---
 
+## 🔗 Lab Access
+
+📌 **Register / Access the Lab Here:**  
+👉 https://docs.google.com/forms/d/e/1FAIpQLSdOGv7UbT1wzIFAbd5L5-jLnCtMD4MZed37I1HOnc6mXyR_lg/viewform?usp=sharing&ouid=103508935715663486190
+
+---
+
 <p align="center">
   <img src="game%20of%20throne.jpeg" alt="Seven Kingdoms Lab Banner" width="900">
 </p>
@@ -12,18 +19,18 @@
 
 ## 🚀 Overview
 
-The **Seven Kingdoms Offensive Security Lab** is a comprehensive internal network simulation built using Docker.  
+The **Seven Kingdoms Offensive Security Lab** is a comprehensive internal network simulation built using Docker.
 
-It is designed to help cybersecurity students and aspiring penetration testers develop practical, real-world skills in a controlled environment.
+It is designed to help cybersecurity students and aspiring penetration testers develop practical, real-world skills within a structured and controlled environment.
 
-This lab integrates concepts aligned with:
+This lab integrates techniques aligned with:
 
 - 🟢 eJPT-level fundamentals  
 - 🟡 OSCP-style Linux exploitation and privilege escalation  
-- 🔵 CRTP-focused Active Directory attacks  
+- 🔵 CRTP-focused Active Directory attack paths  
 - 🔴 CRTO-style NTLM relay and lateral movement techniques  
 
-Unlike single-machine challenges, this lab simulates a **realistic enterprise attack chain**, requiring structured thinking, enumeration, pivoting, and privilege escalation across multiple systems.
+Unlike single-machine challenges, this lab simulates a **realistic enterprise attack chain**, requiring structured thinking, enumeration, pivoting, and privilege escalation across multiple interconnected systems.
 
 ---
 
@@ -44,9 +51,9 @@ Participants will gain hands-on experience in:
 
 # 🧱 Lab Architecture
 
-All services operate within an isolated Docker bridge network, simulating an internal enterprise infrastructure.
+All services operate within an isolated Docker bridge network, simulating a segmented internal enterprise infrastructure.
 
-The environment includes:
+### 🏰 Infrastructure Components
 
 - Vulnerable web applications  
 - Linux-based SSH foothold system  
@@ -58,7 +65,7 @@ The environment includes:
 - BloodHound (Neo4j) for AD attack path analysis  
 - Kali Linux attacker machine  
 
-This structure enables full attack-chain simulation from initial access to domain compromise.
+This structure enables a full attack-chain simulation from initial access to complete domain compromise.
 
 ---
 
@@ -69,10 +76,11 @@ This structure enables full attack-chain simulation from initial access to domai
 - Docker  
 - Docker Compose  
 - Minimum 8GB RAM recommended  
-- Linux, macOS, or Windows (WSL2 recommended for Windows users)  
+- Linux, macOS, or Windows (WSL2 recommended for Windows users)
 
 Verify installation:
 
 ```bash
 docker --version
 docker compose version
+```
