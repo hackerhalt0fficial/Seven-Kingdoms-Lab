@@ -88,7 +88,7 @@ docker compose version
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/seven-kingdoms-lab.git
+https://github.com/hackerhalt0fficial/Seven-Kingdoms-Lab.git
 cd seven-kingdoms-lab
 ```
 
