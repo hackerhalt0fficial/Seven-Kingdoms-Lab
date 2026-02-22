@@ -42,4 +42,21 @@ Students will practice:
 
 All services run inside a Docker bridge network:
 
+---
+
+# ⚙️ Setup Instructions
+
+## 1️⃣ Requirements
+
+- Docker
+- Docker Compose
+- Minimum 8GB RAM recommended
+- Linux / macOS / Windows (WSL2 recommended)
+
+Check installation:
+
+```bash
+docker --version
+docker compose version
+
 
