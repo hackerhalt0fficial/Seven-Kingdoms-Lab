@@ -1,46 +1,64 @@
 # 🏰 Seven Kingdoms Offensive Security Lab
 
-> A Game of Thrones–themed multi-stage penetration testing lab built for students to gain real-world offensive security experience.
+> A multi-stage, Game of Thrones–themed offensive security lab designed to provide students with realistic, hands-on penetration testing experience.
 
 ---
 
-![Seven Kingdoms Lab Banner](game%20of%20throne.jpeg)
+<p align="center">
+  <img src="game%20of%20throne.jpeg" alt="Seven Kingdoms Lab Banner" width="900">
+</p>
 
-## 🚀 About This Lab
+---
 
-The **Seven Kingdoms Lab** is a hands-on internal network simulation designed for cybersecurity students.
+## 🚀 Overview
 
-It combines:
+The **Seven Kingdoms Offensive Security Lab** is a comprehensive internal network simulation built using Docker.  
 
-- 🟢 eJPT fundamentals  
-- 🟡 OSCP-style Linux exploitation  
-- 🔵 CRTP Active Directory attacks  
-- 🔴 CRTO NTLM relay & lateral movement  
+It is designed to help cybersecurity students and aspiring penetration testers develop practical, real-world skills in a controlled environment.
 
-This lab simulates a realistic enterprise network where students must think like real penetration testers.
+This lab integrates concepts aligned with:
 
-This is NOT a single vulnerable machine — it is a full attack chain.
+- 🟢 eJPT-level fundamentals  
+- 🟡 OSCP-style Linux exploitation and privilege escalation  
+- 🔵 CRTP-focused Active Directory attacks  
+- 🔴 CRTO-style NTLM relay and lateral movement techniques  
+
+Unlike single-machine challenges, this lab simulates a **realistic enterprise attack chain**, requiring structured thinking, enumeration, pivoting, and privilege escalation across multiple systems.
 
 ---
 
 ## 🎯 Learning Objectives
 
-Students will practice:
+Participants will gain hands-on experience in:
 
-- 🔎 Network & service enumeration  
-- 🌐 Web application exploitation (DVWA, Juice Shop, bWAPP)  
-- 🐧 Linux privilege escalation  
-- 🗂 SMB enumeration & legacy protocol abuse  
-- 🔐 NTLM relay attacks  
-- 🧠 Kerberoasting  
-- 👑 Active Directory privilege escalation  
-- 🏴 Multi-stage flag capture  
+- Network and service enumeration  
+- Web application exploitation (DVWA, Juice Shop, bWAPP)  
+- Linux privilege escalation techniques  
+- SMB enumeration and legacy protocol abuse (SMBv1)  
+- NTLM relay attack concepts  
+- Kerberoasting and credential extraction  
+- Active Directory enumeration and privilege escalation  
+- Multi-stage flag capture methodology  
 
 ---
 
 # 🧱 Lab Architecture
 
-All services run inside a Docker bridge network:
+All services operate within an isolated Docker bridge network, simulating an internal enterprise infrastructure.
+
+The environment includes:
+
+- Vulnerable web applications  
+- Linux-based SSH foothold system  
+- MySQL database server  
+- SMB file servers (including legacy configuration)  
+- NTLM relay target  
+- Active Directory Domain Controller  
+- LDAP service  
+- BloodHound (Neo4j) for AD attack path analysis  
+- Kali Linux attacker machine  
+
+This structure enables full attack-chain simulation from initial access to domain compromise.
 
 ---
 
@@ -48,15 +66,13 @@ All services run inside a Docker bridge network:
 
 ## 1️⃣ Requirements
 
-- Docker
-- Docker Compose
-- Minimum 8GB RAM recommended
-- Linux / macOS / Windows (WSL2 recommended)
+- Docker  
+- Docker Compose  
+- Minimum 8GB RAM recommended  
+- Linux, macOS, or Windows (WSL2 recommended for Windows users)  
 
-Check installation:
+Verify installation:
 
 ```bash
 docker --version
 docker compose version
-
-
