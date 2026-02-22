@@ -1,0 +1,214 @@
+version: "3.8"
+
+networks:
+  westeros_net:
+    name: westeros_net
+    driver: bridge
+
+services:
+
+  winterfell:
+    image: vulnerables/web-dvwa
+    container_name: winterfell
+    networks:
+      - westeros_net
+    ports:
+      - "8888:80"
+    restart: unless-stopped
+
+  casterlyrock:
+    image: fauria/vsftpd
+    container_name: casterlyrock
+    networks:
+      - westeros_net
+    environment:
+      FTP_USER: tyrion.lannister
+      FTP_PASS: Wine123!
+    ports:
+      - "22121:21"
+    restart: unless-stopped
+
+  thewall:
+    image: linuxserver/openssh-server
+    container_name: thewall
+    networks:
+      - westeros_net
+    environment:
+      PASSWORD_ACCESS: "true"
+      USER_NAME: jon.snow
+      USER_PASSWORD: "Winter123!"
+    ports:
+      - "22222:2222"
+    volumes:
+      - ./flags/thewall-flags.sh:/init-flags.sh
+    command: >
+      bash -c "/init-flags.sh && /init"
+    restart: unless-stopped
+
+  dragonstone:
+    image: mysql:5.7
+    container_name: dragonstone
+    networks:
+      - westeros_net
+    environment:
+      MYSQL_ROOT_PASSWORD: RootDragon1!
+      MYSQL_DATABASE: ironbank
+      MYSQL_USER: daenerys.targaryen
+      MYSQL_PASSWORD: Dracarys1!
+    ports:
+      - "13307:3306"
+    volumes:
+      - ./flags/dragonstone-flags.sql:/docker-entrypoint-initdb.d/flags.sql
+    restart: unless-stopped
+
+  highgarden:
+    image: dperson/samba
+    container_name: highgarden
+    networks:
+      - westeros_net
+    volumes:
+      - ./flags/highgarden-flags.sh:/init-flags.sh
+    command: >
+      bash -c "/init-flags.sh &&
+      samba.sh -u margaery.tyrell;Rose123! 
+      -u jaime.lannister;Kingslayer1! 
+      -s public;/public;yes;yes;yes;all"
+    ports:
+      - "15445:445"
+    restart: unless-stopped
+
+  ironislands:
+    image: dperson/samba
+    container_name: ironislands
+    networks:
+      - westeros_net
+    volumes:
+      - ./flags/ironislands-flags.sh:/init-flags.sh
+    command: >
+      bash -c "/init-flags.sh &&
+      samba.sh -u theon.greyjoy;Reek123! 
+      -s legacy;/legacy;yes;yes;yes;all"
+    ports:
+      - "16445:445"
+    restart: unless-stopped
+
+  dorne:
+    image: dperson/samba
+    container_name: dorne
+    networks:
+      - westeros_net
+    command:
+      - "-u"
+      - "arya.stark;Needle123!"
+      - "-u"
+      - "sansa.stark;NorthQueen1!"
+      - "-s"
+      - "users;/users;yes;yes;yes;all"
+    ports:
+      - "17445:445"
+    restart: unless-stopped
+
+  kingslanding:
+    image: instantlinux/samba-dc
+    container_name: kingslanding
+    hostname: kingslanding
+    networks:
+      - westeros_net
+    environment:
+      DOMAIN: sevenkingdoms.local
+      DOMAINPASS: ThroneAdmin1!
+    volumes:
+      - ./flags/kingslanding-flags.sh:/init-flags.sh
+    command: >
+      bash -c "/init-flags.sh && /usr/sbin/samba -i"
+    ports:
+      - "10553:53"
+      - "10888:88"
+      - "10389:389"
+      - "11389:636"
+      - "18445:445"
+    restart: unless-stopped
+
+  stormlands:
+    image: dperson/samba
+    container_name: stormlands
+    networks:
+      - westeros_net
+    command:
+      - "-u"
+      - "svc.ironbank;BankService1!"
+      - "-u"
+      - "robert.baratheon;Hammer123!"
+      - "-s"
+      - "shared;/shared;yes;yes;yes;all"
+    ports:
+      - "20445:445"
+    restart: unless-stopped
+
+  thevale:
+    image: dperson/samba
+    container_name: thevale
+    networks:
+      - westeros_net
+    volumes:
+      - ./flags/thevale-flags.sh:/init-flags.sh
+    command: >
+      bash -c "/init-flags.sh &&
+      samba.sh -u petyr.baelish;Chaos123! 
+      -s data;/data;yes;yes;yes;all"
+    ports:
+      - "19445:445"
+    restart: unless-stopped
+
+  braavos:
+    image: osixia/openldap
+    container_name: braavos
+    networks:
+      - westeros_net
+    environment:
+      LDAP_ORGANISATION: IronBank
+      LDAP_DOMAIN: sevenkingdoms.local
+      LDAP_ADMIN_PASSWORD: IronBankRoot1!
+    ports:
+      - "20389:389"
+    restart: unless-stopped
+
+  bloodhound:
+    image: neo4j:5
+    container_name: bloodhound
+    networks:
+      - westeros_net
+    environment:
+      NEO4J_AUTH: neo4j:BloodHound1!
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    restart: unless-stopped
+
+  riverrun:
+    image: bkimminich/juice-shop
+    container_name: riverrun
+    networks:
+      - westeros_net
+    ports:
+      - "8090:3000"
+    restart: unless-stopped
+
+  oldtown:
+    image: raesene/bwapp
+    container_name: oldtown
+    networks:
+      - westeros_net
+    ports:
+      - "8180:80"
+    restart: unless-stopped
+
+  redkeep:
+    image: kalilinux/kali-rolling
+    container_name: redkeep
+    tty: true
+    stdin_open: true
+    networks:
+      - westeros_net
+    command: /bin/bash
+    restart: unless-stopped
