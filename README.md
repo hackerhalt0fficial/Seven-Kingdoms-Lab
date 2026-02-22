@@ -4,7 +4,7 @@
 
 ---
 
-![Seven Kingdoms Lab Banner](/Lab/assets/game%20of%20throne.jpeg)
+![Seven Kingdoms Lab Banner](game%20of%20throne.jpeg)
 
 ## 🚀 About This Lab
 
